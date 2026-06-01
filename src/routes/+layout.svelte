@@ -43,7 +43,7 @@
 <header class="site-header">
   <div class="logo">
     <a href="/">
-      <img src="logo.png" alt="HotovkyZaKacku.cz">
+    <img src="/logo.svg" alt="HotovkyZaKacku.cz">
     </a>
   </div>
   <div class="">
