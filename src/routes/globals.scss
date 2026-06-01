@@ -1,48 +1,56 @@
+@use '$lib/vars' as *;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
 	padding: 0;
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Fira Sans', sans-serif;
 }
 body {
 	font-size: 24px;
 }
-
+main {
+	margin-top: $header-height;
+}
 @media (max-width: 900px) {
-	main {
-		margin-top: 64px;
-	}
 	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgba($structural-color, 0.9);
+		backdrop-filter: blur(10px);
+		a,
+		button {
+			color: $text-color;
+		}
 		a {
-			color: black;
 			text-decoration: none;
 		}
 		button {
 			background: none;
 			border: none;
-			color: black;
 		}
-		button:disabled {
+		/* button:disabled {
 			display: none;
-		}
+		} */
 	}
 	.mobile-site-header {
-		position: fixed;
-		top: 0;
-		left: 0;
 		display: flex;
-		width: 100%;
 		justify-content: space-between;
 		align-items: center;
-		height: 64px;
-		background-color: green;
-		.logo img {
-			height: 48px;
-			margin: 8px;
+		height: $header-height;
+		.logo {
+			img {
+				height: 64px;
+			}
+			a {
+				display: flex;
+				margin: 0 $header-margin;
+			}
 		}
 		button {
-			margin: 8px;
+			margin: $header-margin;
 			background: rgba(0, 0, 0, 0.1);
-			color: white;
 			display: flex;
 			height: 48px;
 			width: 48px;
@@ -50,20 +58,177 @@ body {
 			justify-content: center;
 		}
 	}
-	/* Mobile nav: .site-navigation receives the 'open' class from Svelte */
-	.site-navigation {
-		background-color: red;
-		position: fixed;
-		top: 64px;
-		left: 0;
-		width: 100%;
+	.main-navigation {
 		height: 0;
 		overflow: hidden;
-		transition: height 200ms ease;
+		transition: height 500ms ease;
+	}
+	.nav-items {
+		height: calc(100vh - $header-height);
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
+	}
+	.site-navigation {
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		ul {
+			list-style: none;
+			display: flex;
+
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			li {
+				width: 100%;
+			}
+			a {
+				display: flex;
+				justify-content: center;
+				padding: $header-margin;
+			}
+		}
+	}
+	.site-language {
+		padding: $header-margin;
+		flex-grow: 0;
+		flex-shrink: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		small {
+			font-size: 16px;
+		}
+		nav {
+			display: flex;
+			gap: 6px;
+		}
+		button {
+			display: flex;
+			align-items: center;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 18px;
+			padding: 6px 12px;
+			background-color: $text-color;
+			color: $background-color;
+			gap: 2px;
+			&:disabled {
+				cursor: not-allowed;
+				background-color: $background-color;
+				color: $text-color;
+			}
+		}
+		svg {
+			display: none;
+		}
 	}
 
-	.site-navigation.open {
-		height: calc(100vh - 64px);
+	.main-navigation.open {
 		overflow-y: auto;
+		height: calc(100vh - $header-height);
+	}
+}
+
+@media (min-width: 900px) {
+	.site-header {
+		position: fixed;
+		height: $header-height;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgba($structural-color, 0.9);
+		backdrop-filter: blur(10px);
+	}
+	.header-items {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 $header-margin;
+		max-width: 1200px;
+		margin: 0 auto;
+		a,
+		button {
+			color: $text-color;
+		}
+		a {
+			text-decoration: none;
+		}
+		button {
+			background: none;
+			border: none;
+		}
+		button:disabled {
+			display: none;
+		}
+		.logo {
+			img {
+				height: 64px;
+			}
+			a {
+				display: flex;
+			}
+		}
+	}
+	.site-language {
+		display: flex;
+		align-items: center;
+		/* order: -1;  */
+		small,
+		button:disabled {
+			display: none;
+		}
+		nav {
+			display: flex;
+		}
+	}
+
+	.mobile-site-header button {
+		display: none;
+	}
+	.main-navigation {
+		display: flex;
+		height: 100%;
+		nav {
+			display: flex;
+			height: 100%;
+		}
+	}
+	.nav-items {
+		display: flex;
+		align-items: center;
+		gap: 26px;
+		ul,
+		li,
+		a {
+			height: 100%;
+		}
+		ul {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: $header-margin;
+		}
+		a {
+			text-transform: uppercase;
+			display: flex;
+			align-items: center;
+			height: 100%;
+		}
+	}
+	.site-language button {
+		display: flex;
+		align-items: center;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 20px;
+		background-color: transparent;
+		color: $text-color;
+		gap: 4px;
 	}
 }
