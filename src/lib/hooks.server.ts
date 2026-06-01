@@ -1,7 +1,7 @@
 // src/hooks.server.ts
 import type { Handle } from '@sveltejs/kit';
 
-const SUPPORTED = new Set(['cs', 'de', 'en']);
+const SUPPORTED = new Set(['cs', 'de']);
 
 function parseAcceptLanguage(header?: string): string | null {
     if (!header) return null;
@@ -26,6 +26,7 @@ function parseAcceptLanguage(header?: string): string | null {
 export const handle: Handle = async ({ event, resolve }) => {
     // 1. Získáme jazyk z cookie (pokud existuje)
     let lang = event.cookies.get('lang');
+    const hadCookie = lang !== undefined;
 
     // normalize alias
     if (lang === 'cz') lang = 'cs';
@@ -39,7 +40,12 @@ export const handle: Handle = async ({ event, resolve }) => {
     // 3. Uložíme jazyk do locals, aby byl dostupný v layoutu/stránkách
     event.locals.lang = lang;
 
-    // 4. Vložíme jazyk do HTML tagu pro SEO
+    // 4. Pokud návštěva přišla bez cookie, nastavíme ji aby preference přetrvala
+    if (!hadCookie) {
+        event.cookies.set('lang', lang!, { path: '/', maxAge: 31536000, sameSite: 'lax' });
+    }
+
+    // 5. Vložíme jazyk do HTML tagu pro SEO
     return await resolve(event, {
         transformPageChunk: ({ html }) => html.replace('%sveltekit.assets.lang%', lang!)
     });

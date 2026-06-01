@@ -1,7 +1,7 @@
 // src/hooks.server.ts
 import type { Handle } from '@sveltejs/kit';
 
-const SUPPORTED = new Set(['cs', 'de', 'en']);
+const SUPPORTED = new Set(['cs', 'de']);
 
 function parseAcceptLanguage(header?: string): string | null {
     if (!header) return null;
@@ -27,6 +27,7 @@ function parseAcceptLanguage(header?: string): string | null {
 export const handle: Handle = async ({ event, resolve }) => {
     // 1) Prefer cookie
     let lang = event.cookies.get('lang') ?? undefined;
+    const hadCookie = lang !== undefined;
 
     // normalize alias
     if (lang === 'cz') lang = 'cs';
@@ -40,6 +41,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     // Save to locals for server-side loads
     event.locals.lang = lang;
+
+    // If this request came without a lang cookie, set it so subsequent requests persist the choice
+    if (!hadCookie) {
+        event.cookies.set('lang', lang!, { path: '/', maxAge: 31536000, sameSite: 'lax' });
+    }
 
     // Resolve and inject HTML lang placeholder
     const response = await resolve(event, {
