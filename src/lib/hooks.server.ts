@@ -5,11 +5,12 @@ export const handle: Handle = async ({ event, resolve }) => {
     // 1. Získáme jazyk z cookie (pokud existuje)
     let lang = event.cookies.get('lang');
 
-    // 2. Pokud cookie není, podíváme se na hlavičku prohlížeče
+    // normalize alias
+    if (lang === 'cz') lang = 'cs';
+
+    // 2. Default to Czech when no cookie present
     if (!lang) {
-        const acceptLanguage = event.request.headers.get('accept-language');
-        // Pokud prohlížeč preferuje němčinu (začíná na 'de'), nastavíme 'de', jinak 'cs'
-        lang = acceptLanguage?.startsWith('de') ? 'de' : 'cs';
+        lang = 'cs';
     }
 
     // 3. Uložíme jazyk do locals, aby byl dostupný v layoutu/stránkách

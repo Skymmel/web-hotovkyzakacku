@@ -34,7 +34,7 @@
     function changeLang(newLang: string) {
         // update state and cookie; no URL prefixing
         langState.set(newLang);
-        document.cookie = `lang=${newLang}; path=/; max-age=31536000`;
+        document.cookie = `lang=${newLang}; path=/; max-age=31536000; samesite=lax`;
         if (typeof document !== 'undefined') {
             document.documentElement.lang = newLang;
         }
@@ -48,7 +48,7 @@
   </div>
   <div class="">
       <nav aria-label="Jazykové volby" class="site-language">
-          <button onclick={() => changeLang('cs')} disabled={langState.value === 'cs'}>CZ</button>
+          <button onclick={() => changeLang('cs')} disabled={langState.value === 'cs'}>CS</button>
           <button onclick={() => changeLang('de')} disabled={langState.value === 'de'}>DE</button>
       </nav>
       <div>
