@@ -5,13 +5,13 @@
 </script>
 
 <main>
+	<!-- <h1>{translations[langState.value]?.week}</h1> -->
+
 	{#if data?.error}
 		<div style="background:#fee;border:1px solid #fbb;padding:12px;margin:12px 0;">
 			Chyba: {data.error}
 		</div>
 	{/if}
-
-	<!-- <h1>{translations[langState.value]?.week}</h1> -->
 
 	{#if data?.menu && Object.keys(data.menu).length > 0}
 		{#each Object.entries(data.menu) as [tyden, dny]}
@@ -30,7 +30,7 @@
 							<ol>
 								{#each (info as any).polevky as p}
 									<li>
-										{(p as any).Hmotnost}
+										<small>{(p as any).Hmotnost}</small>
 										{langState.value === 'cs' ? (p as any).Název : (p as any).Nazev_DE} - {(
 											p as any
 										).Cena} Kč
@@ -42,7 +42,7 @@
 							<ol>
 								{#each (info as any).jidla as p}
 									<li>
-										{(p as any).Hmotnost}
+										<small>{(p as any).Hmotnost}</small>
 										{langState.value === 'cs' ? (p as any).Název : (p as any).Nazev_DE} - {(
 											p as any
 										).Cena} Kč

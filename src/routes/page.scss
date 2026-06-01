@@ -1,6 +1,6 @@
 @use '$lib/vars' as *;
 
 main {
-	background-color: $text-color;
-	color: $background-color;
+	background-color: $background-color;
+	color: $text-color;
 }
