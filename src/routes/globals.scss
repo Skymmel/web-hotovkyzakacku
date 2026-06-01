@@ -79,7 +79,7 @@ main {
 		ul {
 			list-style: none;
 			display: flex;
-
+			gap: 32px;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
@@ -108,8 +108,11 @@ main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 6px;
+		gap: 12px;
 		small {
+			display: flex;
+			gap: 6px;
+			align-items: center;
 			font-size: 16px;
 		}
 		nav {
@@ -136,9 +139,9 @@ main {
 				background-color: $special-color;
 				color: $structural-color;
 			}
-		}
-		svg {
-			display: none;
+			svg {
+				display: none;
+			}
 		}
 	}
 

@@ -69,7 +69,35 @@
 					</ul>
 				</nav>
 				<div class="site-language">
-					<small>{translations[langState.value].navigation.language}</small>
+					<small
+						><svg
+							width="20px"
+							height="20px"
+							viewBox="0 0 24 24"
+							role="img"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-labelledby="languageIconTitle"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							fill="none"
+							color="currentColor"
+							><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+								id="SVGRepo_tracerCarrier"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							></g><g id="SVGRepo_iconCarrier">
+								<title id="languageIconTitle">Language</title>
+								<circle cx="12" cy="12" r="10"></circle>
+								<path
+									stroke-linecap="round"
+									d="M12,22 C14.6666667,19.5757576 16,16.2424242 16,12 C16,7.75757576 14.6666667,4.42424242 12,2 C9.33333333,4.42424242 8,7.75757576 8,12 C8,16.2424242 9.33333333,19.5757576 12,22 Z"
+								></path> <path stroke-linecap="round" d="M2.5 9L21.5 9M2.5 15L21.5 15"></path>
+							</g></svg
+						>
+						{translations[langState.value].navigation.language}</small
+					>
 					<nav aria-label="Jazykové volby">
 						<button onclick={() => changeLang('cs')} disabled={langState.value === 'cs'}>
 							<svg
