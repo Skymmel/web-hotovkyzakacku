@@ -247,25 +247,28 @@ main {
 			}
 		}
 	}
-	.site-language button {
-		display: flex;
-		align-items: center;
-		border-radius: 18px;
-		cursor: pointer;
-		font-size: 16px;
-		background-color: transparent;
-		padding: 0 14px 0px 14px;
-		height: 36px;
-		font-weight: 500;
-		border: solid 2px $special-color;
-		color: $special-color;
-		gap: 4px;
-		transition:
-			background-color 100ms,
-			color 100ms;
-		&:hover {
+	.site-language {
+		nav:hover button {
+			border-radius: 20px;
 			background-color: $special-color;
 			color: $structural-color;
+		}
+		button {
+			display: flex;
+			align-items: center;
+			border-radius: 18px;
+			cursor: pointer;
+			font-size: 16px;
+			background-color: transparent;
+			padding: 0 14px 0px 14px;
+			height: 36px;
+			font-weight: 500;
+			border: solid 2px $special-color;
+			color: $special-color;
+			gap: 4px;
+			transition:
+				background-color 100ms,
+				color 100ms;
 		}
 	}
 }
