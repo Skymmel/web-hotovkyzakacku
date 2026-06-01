@@ -3,8 +3,26 @@ import type { Handle } from '@sveltejs/kit';
 
 const SUPPORTED = new Set(['cs', 'de', 'en']);
 
-// Accept-Language parsing intentionally removed.
-// Prefer server default 'cs' when no cookie is present to avoid unexpected German fallback.
+function parseAcceptLanguage(header?: string): string | null {
+    if (!header) return null;
+    const parts = header.split(',').map(p => p.trim()).map(part => {
+        const [range, qpart] = part.split(';').map(p => p.trim());
+        let q = 1;
+        if (qpart) {
+            const m = qpart.match(/q=([0-9.]+)/);
+            if (m) q = parseFloat(m[1]);
+        }
+        return { range, q };
+    });
+    // sort by quality (descending)
+    parts.sort((a, b) => b.q - a.q);
+    for (const p of parts) {
+        const primary = p.range.split('-')[0].toLowerCase();
+        const normalized = primary === 'cz' ? 'cs' : primary;
+        if (SUPPORTED.has(normalized)) return normalized;
+    }
+    return null;
+}
 
 export const handle: Handle = async ({ event, resolve }) => {
     // 1) Prefer cookie
@@ -14,11 +32,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (lang === 'cz') lang = 'cs';
     if (lang && !SUPPORTED.has(lang)) lang = undefined;
 
-    // 2) Fallback to Accept-Language
+    // 2) Fallback to Accept-Language (choose first supported preferred language)
     if (!lang) {
-            // Default to Czech ('cs') when no explicit cookie present.
-            lang = 'cs';
-        }
+        const header = event.request.headers.get('accept-language') ?? undefined;
+        lang = parseAcceptLanguage(header) ?? 'cs';
+    }
 
     // Save to locals for server-side loads
     event.locals.lang = lang;
