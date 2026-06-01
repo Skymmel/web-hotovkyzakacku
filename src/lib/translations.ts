@@ -1,28 +1,39 @@
+// src/lib/translations.ts
 export const translations = {
-  cz: {
-    week: "Tento týden",
-    nextWeek: "Příští týden",
-    soups: "Polévky",
-    meals: "Hlavní jídla",
-    days: {
-      "Pondělí": "Pondělí",
-      "Úterý": "Úterý",
-      "Středa": "Středa",
-      "Čtvrtek": "Čtvrtek",
-      "Pátek": "Pátek"
-    }
-  },
+  cs: {
+    navigation: {
+      home: "Domů",
+      menu: "Denní nabídka",
+    },
+    mainTitle: "Denní nabídka",
+        week: "Tento týden",
+        nextWeek: "Příští týden",
+        soups: "Polévky",
+        meals: "Hlavní jídla",
+        days: {
+            "Pondělí": "Pondělí",
+            "Úterý": "Úterý",
+            "Středa": "Středa",
+            "Čtvrtek": "Čtvrtek",
+            "Pátek": "Pátek"
+        }
+    },
   de: {
-    week: "Diese Woche",
-    nextWeek: "Nächste Woche",
-    soups: "Suppen",
-    meals: "Hauptgerichte",
-    days: {
-      "Pondělí": "Montag",
-      "Úterý": "Dienstag",
-      "Středa": "Mittwoch",
-      "Čtvrtek": "Donnerstag",
-      "Pátek": "Freitag"
+      navigation: {
+        home: "Startseite",
+        menu: "Tageskarte",
+      },
+      mainTitle: "Tageskarte",
+        week: "Diese Woche",
+        nextWeek: "Nächste Woche",
+        soups: "Suppen",
+        meals: "Hauptgerichte",
+        days: {
+            "Pondělí": "Montag",
+            "Úterý": "Dienstag",
+            "Středa": "Mittwoch",
+            "Čtvrtek": "Donnerstag",
+            "Pátek": "Freitag"
+        }
     }
-  }
 };
