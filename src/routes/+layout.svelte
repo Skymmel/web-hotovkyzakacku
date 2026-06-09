@@ -162,4 +162,10 @@
 	</div>
 </header>
 {@render children()}
-<footer></footer>
+<footer class="site-footer">
+    <div class="footer-items">
+        <div class="copyright">
+            &copy; {new Date().getFullYear()} Hotovky za kačku, web vytvořil <a href="https://wilhelmskyba.eu" target="_blank">Wilhelm Skyba</a>
+        </div>
+    </div>
+</footer>

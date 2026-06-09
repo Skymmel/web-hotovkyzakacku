@@ -1,15 +1,21 @@
 @use '$lib/vars' as *;
 @import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chonburi&family=Spline+Sans:wght@300..700&display=swap');
 * {
 	padding: 0;
 	margin: 0;
 	font-family: 'Spline Sans Mono', monospace;
 }
 body {
+   	background-color: $background-color;
+	color: $text-color;
 	font-size: 16px;
 }
 main {
-	margin-top: $header-height;
+	padding-top: $header-height;
+}
+h1, h2, h3 {
+    font-family: "Chonburi", serif;
 }
 @media (max-width: 900px) {
 	.site-header {
@@ -269,6 +275,30 @@ main {
 			transition:
 				background-color 100ms,
 				color 100ms;
+		}
+	}
+}
+.site-footer {
+	background-color: $structural-color;
+	padding: 24px 0;
+}
+.footer-items {
+	max-width: 1400px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.copyright {
+		font-size: 14px;
+		color: $special-color;
+		a {
+            color: $special-color;
+            text-decoration: underline rgba($special-color, 0);
+            transition: text-decoration-color 500ms;
+
+            &:hover {
+                text-decoration-color: rgba($special-color, 0.8);
+            }
 		}
 	}
 }
