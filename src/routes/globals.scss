@@ -7,18 +7,21 @@
 	font-family: 'Spline Sans Mono', monospace;
 }
 body {
-   	background-color: $background-color;
+	background-color: $background-color;
 	color: $text-color;
 	font-size: 16px;
 }
 main {
 	padding-top: $header-height;
 }
-h1, h2, h3 {
-    font-family: "Chonburi", serif;
+h1,
+h2,
+h3 {
+	font-family: 'Chonburi', serif;
 }
 @media (max-width: 900px) {
 	.site-header {
+		box-shadow: 0 0 12px 0 rgba($text-color, 0.05);
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -41,7 +44,7 @@ h1, h2, h3 {
 		} */
 	}
 	.mobile-site-header {
-		box-shadow: 0 0 0 2px $text-color;
+		/* box-shadow: 0 0 0 2px $special-color; */
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -166,7 +169,8 @@ h1, h2, h3 {
 		width: 100%;
 		background-color: rgba($structural-color, 0.7);
 		backdrop-filter: blur(10px);
-		box-shadow: 0 0 0 2px $text-color;
+		box-shadow: 0 0 12px 0 rgba($text-color, 0.05);
+		/* box-shadow: 0 0 0 2px $special-color; */
 	}
 	.header-items {
 		height: 100%;
@@ -280,7 +284,7 @@ h1, h2, h3 {
 }
 .site-footer {
 	background-color: $structural-color;
-	padding: 24px 0;
+	padding: 24px;
 }
 .footer-items {
 	max-width: 1400px;
@@ -289,16 +293,16 @@ h1, h2, h3 {
 	align-items: center;
 	justify-content: center;
 	.copyright {
-		font-size: 14px;
-		color: $special-color;
+		font-size: 10px;
+		color: $text-color;
 		a {
-            color: $special-color;
-            text-decoration: underline rgba($special-color, 0);
-            transition: text-decoration-color 500ms;
+			color: $text-color;
+			text-decoration: underline rgba($text-color, 0.2);
+			transition: text-decoration-color 500ms;
 
-            &:hover {
-                text-decoration-color: rgba($special-color, 0.8);
-            }
+			&:hover {
+				text-decoration-color: rgba($text-color, 0.8);
+			}
 		}
 	}
 }

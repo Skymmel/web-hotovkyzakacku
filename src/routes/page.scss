@@ -6,67 +6,69 @@ main {
 	margin: 0 auto;
 }
 .menu {
-    max-width: 920px;
-    margin: 0 auto;
-    display: grid;
-    gap: 12px;
-    h2, h3 {
-        font-family: "Chonburi", serif;
-    }
-    h2 {
-        font-size: 4em;
-        text-align: center;
-        padding: 64px 0 12px 0;
-    }
-    h3 {
-        color: $special-color;
-        font-size: 2.5em;
-    }
-    h4 {
-        padding: 24px 0 14px 0;
-        font-size: 18px;
-        font-weight: 300;
-    }
+	max-width: 920px;
+	margin: 0 auto;
+	padding: 0 $header-margin;
+	display: grid;
+	gap: 12px;
+	h2,
+	h3 {
+		font-family: 'Chonburi', serif;
+	}
+	h2 {
+		font-size: 4em;
+		text-align: center;
+		padding: 64px 0 12px 0;
+	}
+	h3 {
+		color: $special-color;
+		font-size: 2.5em;
+	}
+	h4 {
+		padding: 24px 0 14px 0;
+		font-size: 18px;
+		font-weight: 300;
+	}
 }
 .menu-day {
-    padding: 48px 0;
+	padding: 48px 0;
 }
 .menu-list {
-    list-style: none;
-    padding-left: 0;
-    counter-reset: jidlo-counter;
-    display: grid;
-    gap: 10px;
-    li {
-        counter-increment: counter;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 12px;
-        &::before {
-            height: 100%;
-            font-size: 18px;
-            font-weight: 300;
-            display: flex;
-            align-items: center;
-            content: counter(counter) ".";
-            text-align: left;
-            color: inherit;
-        }
-    }
-    li > div {
-          font-family: "Spline Sans", sans-serif;
-        small {
-            font-size: 14px;
-            font-weight: 300;
-        }
-        span {
-            font-size: 22px;
-            font-weight: 300;
-        }
-        font-size: 22px;
-        gap: 12px;
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: center;
-    }
+	list-style: none;
+	padding-left: 0;
+	counter-reset: jidlo-counter;
+	display: grid;
+	gap: 10px;
+	li {
+		counter-increment: counter;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 12px;
+		&::before {
+			height: 100%;
+			font-size: 18px;
+			font-weight: 300;
+			display: flex;
+			align-items: center;
+			content: counter(counter) '.';
+			text-align: left;
+			color: inherit;
+		}
+	}
+	li > div {
+		font-family: 'Spline Sans', sans-serif;
+		small {
+			font-size: 14px;
+			font-weight: 300;
+		}
+		span {
+			font-size: 22px;
+			font-weight: 300;
+		}
+		font-size: 22px;
+		gap: 12px;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+	}
 }
